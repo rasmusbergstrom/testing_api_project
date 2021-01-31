@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
@@ -9,14 +8,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace JokeApi.Controllers
+namespace Project_testing_API.Controllers
 {
     [EnableCors("CORSPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class FootballController : ControllerBase
     {
-            
+
 
         private readonly ILogger<FootballController> _logger;
         private readonly IMemoryCache _memoryCache;

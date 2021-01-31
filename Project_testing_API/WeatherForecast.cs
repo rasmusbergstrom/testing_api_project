@@ -1,6 +1,6 @@
 using System;
 
-namespace JokeApi
+namespace Project_testing_API
 {
     public class WeatherForecast
     {

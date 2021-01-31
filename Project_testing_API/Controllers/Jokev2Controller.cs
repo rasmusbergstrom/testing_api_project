@@ -2,16 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
-namespace JokeApi.Controllers
+namespace Project_testing_API.Controllers
 {
+ 
     [EnableCors("CORSPolicy")]
     [ApiController]
     [Route("[controller]")]
@@ -26,8 +25,8 @@ namespace JokeApi.Controllers
             _logger = logger;
             _memoryCache = memoryCache;
         }
-     
-      
+
+
 
         //GET A RANDOM JOKE
         [HttpGet]
@@ -48,7 +47,7 @@ namespace JokeApi.Controllers
             };
             using (var response = await client.SendAsync(request))
             {
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     response.EnsureSuccessStatusCode();
                     var body = await response.Content.ReadAsStringAsync();
@@ -58,14 +57,14 @@ namespace JokeApi.Controllers
                 {
                     return BadRequest("Error");
                 }
-          
+
             }
 
         }
 
         // GET A JOKE WITH ID 
 
-   
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
@@ -73,7 +72,7 @@ namespace JokeApi.Controllers
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
-                
+
                 Method = HttpMethod.Get,
                 RequestUri = new Uri($"https://joke3.p.rapidapi.com/v1/joke/{id}"),
                 Headers =
@@ -97,7 +96,7 @@ namespace JokeApi.Controllers
                     return BadRequest("Error");
                 }
             }
-            
+
         }
 
         //UPVOTE A JOKE WITH ID
@@ -117,7 +116,7 @@ namespace JokeApi.Controllers
                     { "x-rapidapi-host", "joke3.p.rapidapi.com"
                     },
                 }
-            
+
             };
             using (var response = await client.SendAsync(request))
             {
@@ -131,7 +130,7 @@ namespace JokeApi.Controllers
                 {
                     return BadRequest("Error");
                 }
-             
+
             }
         }
 
@@ -140,7 +139,7 @@ namespace JokeApi.Controllers
         [Route("action")]
         public async Task<IActionResult> PostDownVote(string Id)
         {
-   
+
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
@@ -173,3 +172,4 @@ namespace JokeApi.Controllers
 
     }
 }
+

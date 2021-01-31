@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JokeApi
+namespace Project_testing_API
 {
     public class Startup
     {
@@ -30,8 +30,9 @@ namespace JokeApi
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JokeApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project_testing_API", Version = "v1" });
             });
+
             services.AddMemoryCache();
 
             services.AddCors(o => o.AddPolicy("CORSPolicy", builder =>
@@ -47,7 +48,7 @@ namespace JokeApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JokeApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project_testing_API v1"));
             }
 
             app.UseHttpsRedirection();

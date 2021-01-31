@@ -60,6 +60,7 @@ namespace JokeApi.Controllers
         [HttpGet("{category}")]
         public async Task<IActionResult> Get(string category)
         {
+        
             var endpoint = $"https://v2.jokeapi.dev/joke/{category}?blacklistFlags=nsfw,racist,sexist,explicit&type=single&amount=1";
             string stringResponse;
             using (var client = new HttpClient())
